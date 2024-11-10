@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoalMate - Tasks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="App Logo" class="logo">
+            <h1 class="app-name">GoalMate</h1>
+        </div>
+        <div class="greeting">
+            <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="AI Avatar" class="avatar">
+            <p>Your Tasks, <span id="user-name">Alex</span></p>
+        </div>
+    </header>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('chatbot') }}">Chatbot</a></li>
+            <li><a href="{{ url_for('tasks') }}" class="active">Tasks</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+            <li><a href="{{ url_for('pomodoro') }}">Pomodoro Timer</a></li>
+            <li><a href="{{ url_for('health') }}">Health & Fitness</a></li>
+            <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+            <li><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Task Management Interface -->
+        <section class="task-management">
+            <h2>Your Tasks</h2>
+            <div class="task-list">
+                <!-- Task items will be listed here -->
+                <div class="task-item">
+                    <h3>Task 1</h3>
+                    <p>Details about Task 1.</p>
+                    <button>Complete</button>
+                    <button>Delete</button>
+                </div>
+                <div class="task-item">
+                    <h3>Task 2</h3>
+                    <p>Details about Task 2.</p>
+                    <button>Complete</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+            <button onclick="addNewTask()">Add New Task</button>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GoalMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>

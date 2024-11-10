@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoalMate - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="App Logo" class="logo">
+            <h1 class="app-name">GoalMate</h1>
+        </div>
+        <div class="greeting">
+            <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="AI Avatar" class="avatar">
+            <p>Good Morning, <span id="user-name">Alex</span>! Ready to achieve your goals today?</p>
+        </div>
+    </header>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+            <li><a href="{{ url_for('chatbot') }}">Chatbot</a></li>
+            <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+            <li><a href="{{ url_for('pomodoro') }}">Pomodoro Timer</a></li>
+            <li><a href="{{ url_for('health') }}">Health & Fitness</a></li>
+            <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+            <li><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Daily Overview Section -->
+        <section class="daily-overview">
+            <h2>Today's Overview</h2>
+            <div class="overview-cards">
+                <div class="card">
+                    <h3>Goals</h3>
+                    <p>You have 3 goals set for today.</p>
+                    <button onclick="location.href='{{ url_for('goals') }}'">View Goals</button>
+                </div>
+                <div class="card">
+                    <h3>Tasks</h3>
+                    <p>2 tasks pending completion.</p>
+                    <button onclick="location.href='{{ url_for('tasks') }}'">View Tasks</button>
+                </div>
+                <div class="card">
+                    <h3>Events</h3>
+                    <p>1 event scheduled today.</p>
+                    <button onclick="location.href='{{ url_for('calendar') }}'">View Calendar</button>
+                </div>
+            </div>
+        </section>
+        <!-- Quick Access Buttons -->
+        <section class="quick-access">
+            <button onclick="location.href='{{ url_for('chatbot') }}'">Start New Conversation</button>
+            <button onclick="location.href='{{ url_for('tasks') }}'">Add Task</button>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GoalMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>

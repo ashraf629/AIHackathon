@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoalMate - Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="App Logo" class="logo">
+            <h1 class="app-name">GoalMate</h1>
+        </div>
+        <div class="greeting">
+            <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="AI Avatar" class="avatar">
+            <p>Hi <span id="user-name">Alex</span>, how can I assist you today?</p>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('chatbot') }}" class="active">Chatbot</a></li>
+            <li><a href="{{ url_for('tasks') }}">Tasks</a></li>
+            <li><a href="{{ url_for('goals') }}">Goals</a></li>
+            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+            <li><a href="{{ url_for('pomodoro') }}">Pomodoro Timer</a></li>
+            <li><a href="{{ url_for('health') }}">Health & Fitness</a></li>
+            <li><a href="{{ url_for('calendar') }}">Calendar</a></li>
+            <li><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Chatbot Interface -->
+        <section class="chatbot-interface">
+            <div class="chat-window" id="chat-window">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message here...">
+                <button onclick="sendMessage()">Send</button>
+                <!-- Microphone Icon -->
+                <button onclick="startVoiceRecognition()" class="voice-btn">
+                    <img src="{{ url_for('static', filename='images/microphone.png') }}" alt="Voice Input" class="icon">
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 GoalMate. All rights reserved.</p>
+    </footer>
+</body>
+</html>
