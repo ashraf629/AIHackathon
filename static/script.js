@@ -32,7 +32,6 @@ async function sendMessage() {
         addMessage('user', message);
         // Clear input field
         inputField.value = '';
-
         try {
             // Send message to the backend
             const response = await fetch('/api/chatbot/message', {
@@ -42,14 +41,11 @@ async function sendMessage() {
                 },
                 body: JSON.stringify({ message: message })
             });
-
             if (!response.ok) {
                 throw new Error(`Server error: ${response.statusText}`);
             }
-
             const responseData = await response.json();
             const botMessage = responseData.answer;  // Extract the answer from the response
-
             // Display bot's message
             addMessage('bot', botMessage);
         } catch (error) {
@@ -63,7 +59,7 @@ function addMessage(sender, message) {
     const chatWindow = document.getElementById('chat-window');
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', sender);
-    messageDiv.innerHTML = formatMessage(message);  // Use innerHTML to render HTML tags
+    messageDiv.textContent = message;
     chatWindow.appendChild(messageDiv);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
@@ -75,8 +71,57 @@ function startVoiceRecognition() {
 
 // Task management functionality
 function addNewTask() {
-    alert('Add new task functionality is not implemented in this demo.');
-    // Implement the logic to add a new task
+    const newTaskInput = document.getElementById('new-task');
+    const newTask = newTaskInput.value.trim();
+    if (newTask !== '') {
+        console.log('Adding new task:', newTask); // Debugging statement
+        // Submit the form via fetch API
+        fetch('/add_task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                'new_task': newTask
+            })
+        }).then(response => {
+            if (response.ok) {
+                // Refresh the tasks page
+                window.location.href = '/tasks';
+            } else {
+                console.error('Failed to add task');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    return false; // Prevent form submission
 }
 
+function completeTask(task) {
+    alert(`Complete task: ${task}`);
+    // Implement the logic to mark the task as complete
+}
 
+function deleteTask(task) {
+    console.log('Deleting task:', task); // Debugging statement
+    // Submit the form via fetch API
+    fetch('/delete_task', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            'task': task
+        })
+    }).then(response => {
+        if (response.ok) {
+            // Refresh the tasks page
+            window.location.href = '/tasks';
+        } else {
+            console.error('Failed to delete task');
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+    });
+}
